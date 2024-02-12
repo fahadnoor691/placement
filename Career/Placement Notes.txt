@@ -1,0 +1,158 @@
+				Selection Sort
+
+Minimum Element in unsorted array and swap it with element at begining.
+
+for(i=0;i<n-1)
+ for(j=i+1;j<n)
+  if(arr[j]<arr[i])
+   Swap
+
+				Bubble Sort
+
+Repeatidly Swap two adjacent elements of wrong order.
+
+for(counter=1;counter<n)
+ for(j=0;j<n-counter)
+  if(arr[j]>arr[j+1])
+   Swap
+
+				Insertion Sort
+
+Insert element from unsorted array to its correct position in sorted array
+
+for(i=1;i<n)
+ current=arr[i]
+ j=i-1
+ while(arr[j]>current && j>=0)
+  arr[j+1]=arr[j]
+  j--
+ arr[j+1]=current
+
+
+3 4 6 2 7
+
+				Arithmetic subarray
+
+max length between common subarrays 
+[3,4,6,8,10]
+ [-1,2,2,2]
+
+int pd = arr[1] - arr[0];
+int length = 2;
+
+for (int i = 2; i < 5; i++)
+{
+	if (pd == arr[i] - arr[i - 1])
+	{
+		length++;
+	}
+	else
+	{
+		pd = arr[i] - arr[i - 1];
+		length = 2;
+	}
+}
+		
+				Record Breaking Day
+ith alement of array is greater than all of its previous element and its next one
+
+int max = -1;
+for (int i = 0; i < 8; i++)
+{
+	if (arr[i] > max && arr[i] > arr[i+1])
+	{
+		max = arr[i];
+		count++;
+	}
+}
+	
+				First Repeating Element
+
+tdx[] = -1
+for (int i = 0; i < 8; i++)
+{
+	if (tdx[arr[i]] != -1)
+	{
+		mintd = min(mintd, tdx[arr[i]]);
+	}
+	else
+	{
+		tdx[arr[i]] = i;
+	}
+}
+
+				Maximum SubArray
+
+for (int i = 0; i < n; i++)
+{
+	int sum = 0;
+	for (int j = i; j < n; j++)
+	{
+		sum = sum + arr[j];
+		mx = max(sum, mx);
+	}
+}
+
+				kadan's Algo
+
+sum = 0
+for(int i=0;i<N)
+{
+	sum=sum+arr[i];
+	if(sum<0)
+	{
+		sum=0;
+	}
+	mx=max(mx,sum);
+}
+
+				Maximum Circular Subarray
+
+wrap
+unwrap=kadane(arr,n)
+for(i=0i<n)
+{
+   totalsum+=arr[i];
+   arr[i]=-arr[i];
+}
+
+wrap = totalsum + kadane()
+
+max(wrap,unwrap)
+
+				Pair Sum
+				
+
+int low = 0;
+int high = n - 1;
+bool flag = 0;
+while (low < high)
+{
+	if (arr[low] + arr[high] == k)
+	{
+		flag = 1;
+		break;
+	}
+	else if (arr[low] + arr[high] > k)
+	{
+		high--;
+	}
+	else
+	{
+		low++;
+	}
+}
+
+				Best time to buy and sell stock
+
+int maxProfit(int prices[], int n)
+{
+    int buy = prices[0], max_profit = 0;
+    for (int i = 1; i < n; i++) {
+        if (buy > prices[i])
+            buy = prices[i];
+        else if (prices[i] - buy > max_profit)
+            max_profit = prices[i] - buy;
+    }
+    return max_profit;
+}

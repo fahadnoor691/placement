@@ -1,0 +1,142 @@
+#include<iostream>
+using namespace std;
+class node {
+public:
+	int data;
+	node* next;
+
+	node(int val)
+	{
+		data = val;
+		next = NULL;
+	}
+};
+
+void insertAtEnd(node*& head,int val)
+{
+	node* ins = new node(val);
+
+	node* temp = head;
+
+	if (head == NULL) {
+		head = ins;
+	}
+	else {
+		while (temp->next != NULL) {
+			temp = temp->next;
+		}
+		temp->next = ins;
+	}
+}
+
+void display(node* head) {
+	node* temp = head;
+	while (temp != NULL) {
+		cout << temp->data << "->";
+		temp = temp->next;
+	}
+}
+
+void deletion(node*& head, int val) {
+	node* temp = head;
+		
+	if (temp->data == val) {
+		head = temp->next;
+		delete temp;
+	}
+
+	if (temp->next == NULL)
+	{
+		return;
+	}
+	else {
+		node* prev = head;
+		temp = temp->next;
+		while (temp->next != NULL) {
+			if (temp->data == val) {
+				prev->next = temp->next;
+				delete temp;
+				break;
+			}
+			temp = temp->next;
+			prev = prev->next;
+			if (temp->data == val && temp->next == NULL) {
+				prev->next = NULL;
+				delete temp;
+			}
+		}
+		
+	}
+}
+
+void reverse(node*& head) {
+	node* curr = head;
+	node* prev = NULL;
+	node* nxt;
+
+	while (curr != NULL) {
+		nxt = curr->next;
+		curr->next = prev;
+
+		prev = curr;
+		curr = nxt;
+	}
+	head = prev;
+}
+
+void replacePi(string str)
+{
+	if (str.length() == 0) {
+		return;
+	}
+
+	if (str[0] == 'p' && str[1] == 'i') {
+		cout << "3.14";
+		string ros = str.substr(2);
+		replacePi(ros);
+	}
+	else {
+		cout << str[0];
+		replacePi(str.substr(1));
+	}
+}
+
+void remove(string s, string t) {
+	if (s.length() == 0) {
+		cout << t << endl;
+		return;
+	}
+
+	char ch = s[0];
+	string rem = (s.substr(1));
+
+	remove(rem, t);
+	remove(rem, t + ch);
+}
+
+int find(int a[], int b[], int n)
+{
+	int count = 0;
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[i] < a[j] && b[i] < b[j])
+			{
+				if ((a[i] + a[j]) > (b[i] + b[j]))
+				{
+					count++;
+				}
+			}
+		}
+	}
+	return count;
+}
+int main()
+{
+	int a[3] = { 2,3,4 };
+	int b[3] = { 1,2,3 };
+
+	cout << find(a, b, 3);
+}
+

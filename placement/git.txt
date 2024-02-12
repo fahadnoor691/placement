@@ -1,0 +1,40 @@
+git config --global user.name fahad
+
+git config --global user.email fahad@gmail.com
+
+git init
+
+git add -A
+
+git commit -m "Any Message"
+
+git checkout -f (Files back to the last last commit)
+
+git log -p -5   (shows the last 5 commits)
+
+git diff (compares working tree with the staging area)
+
+git diff --staged(compares staging area with the last commit)
+
+git commit -a -m "Message" (commit without staging area)
+
+git rm file.html(Remove file permanently)
+
+git rm --cached file.html
+
+git status -s
+
+For ignore any file add .ignore file and in this file if want to ignore all the files having file .log. for ignoring folder add foldername/
+
+git branch feature1 (creates copy of project)
+
+git checkout feature 1 (development shifted to feature 1)
+
+(For merging the extra branch with master firstly we should be at master then)
+git checkout master
+git merge feature1
+
+git checkout -b feature (creates branch and shifted to that branch as well)
+
+
+

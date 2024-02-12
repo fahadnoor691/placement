@@ -1,0 +1,247 @@
+				Product
+
+int pow(int n,int p)
+{
+	if(p==0){
+		return 1;
+	}
+
+	prev=pow(n,p-1);
+	return n*prev;
+}
+
+				Increasing Order
+
+
+void inc(int n)
+{
+	if (n == 1) {
+		cout << "1";
+		return;
+	}
+
+	inc(n - 1);
+	cout << n;
+}
+				Decreasing Order
+void dec(int n)
+{
+	if (n == 1) {
+		cout << "1";
+		return;
+	}
+
+	cout << n;
+	dec(n - 1);
+	
+}
+				Check array sort
+bool checksort(int arr[], int n) {
+	if (n == 1) {
+		return true;
+	}
+
+	bool restArray = checksort(arr + 1, n - 1);
+	return (arr[0] < arr[1] && restArray);
+}
+
+				First Occurence of integer
+
+int firstocc(int arr[], int n, int i, int key)
+{
+	if (i == n) {
+		return -1;
+	}
+
+	if (arr[i] == key)
+	{
+		return i;
+	}
+	return firstocc(arr, n, i + 1, key);
+}
+
+				Last occurence of integer
+
+int lastocc(int arr[], int n, int i, int key)
+{
+	if (i == n) {
+		return -1;
+	}
+
+	int restArray = lastocc(arr, n, i + 1, key);
+
+	if (restArray != -1) {
+		return restArray;
+	}
+
+	if (arr[i] == key)
+	{
+		return i;
+	}
+
+	return -1;
+}
+
+				Reverse String
+
+void reverseStr(string str)
+{
+	if (str.length() == 0) {
+		return;
+	}
+
+	string ros = str.substr(1);
+	reverseStr(ros);
+	cout << str[0];
+}
+
+				Replace pi with 3.14 in string
+void replacePi(string str)
+{
+	if (str.length() == 0) {
+		return;
+	}
+
+	if (str[0] == 'p' && str[1] == 'i') {
+		cout << "3.14";
+		string ros = str.substr(2);
+		replacePi(ros);
+	}
+	else {
+		cout << str[0];
+		replacePi(str.substr(1));
+	}
+}
+
+				Remove duplicates
+
+string remove(string s) {
+	if (s.length() == 0) {
+		return "";
+	}
+
+	char ch = s[0];
+	string rem = remove(s.substr(1));
+
+
+	if (ch == rem[0]) {
+		return rem;
+	}
+	else {
+		return(ch + rem);
+	}
+}
+				reverse array
+
+f(i)
+{
+	if(i>=n/2)
+	{
+		return;
+	}
+	swap(a[i],a[n-i-1]);
+	f(i+1);
+}
+
+				Pallindrome
+
+f(i)
+{
+	if(i>=n/2)
+	{
+		return true;
+	}
+	if(a[i]!=a[n-i-1])
+	{
+	return false;
+	}
+	return f(i+1);
+}
+
+				Fibonacci
+f(n)
+{
+	if(n<=1)
+	{	
+		return n;
+	}
+	last = f(n-2)
+	secLast = f(n-1)
+	return secLast+last
+}
+
+				Subsequences
+f(i,[])
+{
+	if(i>=n)
+	{	
+		print([])
+		return
+	}
+	[].add(arr[i]);
+	f(i+1,[])
+	[].remove(arr[i]);
+	f(i+1,[]);
+}
+				Sunsequence equal to k
+f(i, [], s)
+{
+	if (i >= n)
+	{
+		if (s == sum)
+		{
+			print([]);
+			return;
+		}
+	}
+	[].add(arr[i]);
+	s += arr[i];
+	f(i + 1, [], s);
+	
+	[] .remove(arr[i]);
+	s -= arr[i];
+	f(i + 1, [], s);
+}
+
+				count subsequence equal to k
+
+f(i, [], s)
+{
+	if (i >= n)
+	{
+		if (s == sum)
+		{
+			return 1;
+		}
+		else
+			return 0;
+	}
+	s += arr[i];
+	l = f(i + 1, [], s);
+	
+	s -= arr[i];
+	r = f(i + 1, [], s);
+
+	return l + r;
+}
+
+				Combination Sum
+
+f(i, [], s, t, ds[])
+{
+	if (i == n)
+	{
+		if (t == 0)
+		{
+			ds[].add([]);
+		}
+		return;
+	}
+	if (arr[i]) <= t)
+	{
+		[] .add(arr[i]);
+		f(i, [], s, t-arr[i], ds[]);
+		[] .remove(arr[i]);
+	}
+	f(i + 1, [], s, t, ds[]);
+}
